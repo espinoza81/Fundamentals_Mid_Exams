@@ -1,0 +1,25 @@
+import java.util.*;
+
+public class Numbers {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+        int[] arrayOfInt = Arrays.stream(console.nextLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        int sum = 0;
+        for (int number : arrayOfInt) {
+            sum +=number;
+        }
+        double average = sum*1.0/arrayOfInt.length;
+        List<Integer> greaterAverage = new ArrayList<>();
+        for (int number : arrayOfInt) {
+            if(number > average) greaterAverage.add(number);
+        }
+        Collections.sort(greaterAverage);
+        Collections.reverse(greaterAverage);
+        if (greaterAverage.size()>5) {
+            for (int i = 0; i < 5; i++)   System.out.printf("%s ", greaterAverage.get(i));
+        } else if (greaterAverage.size()>0) {
+            for (Integer integer : greaterAverage) System.out.printf("%s ", integer);
+        }
+        else System.out.println("No");
+    }
+}
